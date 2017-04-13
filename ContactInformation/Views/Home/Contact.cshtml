@@ -1,0 +1,139 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts {
+
+    <link href="~/Content/CustomStyle.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/AngularDemo.js"></script>
+}
+<div ng-app="demoModule" id="body">
+    <div ng-controller="demoCtrl">
+        <h2>AngularJS CRUD Operations with MVC5 WebAPI</h2>
+
+        <h3>List of Contacts</h3>
+
+        <table ng-cloak>
+            <thead>
+                <tr>
+                    <th style="display: none;">ID</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Email</th>
+                    <th>PhoneNumber</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="items in productsData">
+                    <td hidden="hidden">{{items.Id}}</td>
+                    <td>{{items.FirstName}}</td>
+                    <td>{{items.LastName}}</td>
+                    <td>{{items.Email}}</td>
+                    <td>{{items.PhoneNumber}}</td>
+                    <td>{{items.Status}}</td>
+                    <td>
+                        <button ng-model="$scope.Product"
+                                ng-click="edit(productsData[$index])">
+                            Edit
+                        </button>
+                        <button ng-click="delete($index)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6">
+                        <hr />
+                    </td>
+                </tr>
+               
+                   
+            </tfoot>
+        </table>
+        <br />
+        <div style="border-top: solid 2px #282828; width: 430px; height: 10px"> </div>
+
+        <div ng-show="Product.Id != '' ">
+            <div>
+                <h2>Update Product</h2>
+            </div>
+            <div hidden="hidden">
+                <label for="id">Id</label>
+                <input type="text" data-ng-model="ContactInfo.id" />
+            </div>
+            <div>
+                <label for="FirstName">FirstName</label>
+                <input type="text" data-ng-model="ContactInfo.FirstName" />
+            </div>
+
+            <div>
+                <label for="LastName">Lastname</label>
+                <input type="text" data-ng-model="ContactInfo.LastName" />
+            </div>
+
+            <div>
+                <label for="Email">Email</label>
+                <input type="text" data-ng-model="ContactInfo.Email" />
+            </div>
+            <div>
+                <label for="PhoneNumber">PhoneNumber</label>
+                <input type="text" data-ng-model="ContactInfo.PhoneNumber" />
+            </div>
+           
+            <div>
+                <label for="Status">Status</label>
+               <input type="checkbox" data-ng-model="ContactInfo.Status"/>
+               
+            </div>
+            <br />
+            <div>
+                <button data-ng-click="update()">Update</button>
+                <button data-ng-click="cancel()">Cancel</button>
+            </div>
+        </div>
+
+        <div ng-hide="Product.Id != '' ">
+            <div>
+                <h2>Add New Product</h2>
+            </div>
+            <div hidden="hidden">
+                <label for="id">Id</label>
+                <input type="text" data-ng-model="ContactInfo.id" />
+            </div>
+            <div>
+                <label for="FirstName">FirstName</label>
+                <input type="text" data-ng-model="ContactInfo.FirstName" />
+            </div>
+
+            <div>
+                <label for="LastName">Lastname</label>
+                <input type="text" data-ng-model="ContactInfo.LastName" />
+            </div>
+
+            <div>
+                <label for="Email">Email</label>
+                <input type="text" data-ng-model="ContactInfo.Email" />
+            </div>
+            <div>
+                <label for="PhoneNumber">PhoneNumber</label>
+                <input type="text" data-ng-model="ContactInfo.PhoneNumber" />
+            </div>
+
+            <div>
+                <label for="Status">Status</label>
+                <input type="Text" data-ng-model="ContactInfo.Status" />
+
+            </div>            <br />
+            <div>
+                <button data-ng-click="save()">Save</button>
+                <button data-ng-click="clear()">Clear</button>
+            </div>
+        </div>
+    </div>
+</div>
+
